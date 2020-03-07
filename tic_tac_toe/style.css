@@ -1,4 +1,5 @@
 * {
+  font-family: "Oxanium", cursive, Arial, Helvetica, sans-serif;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -33,7 +34,7 @@ body {
   padding: 60px 0 0;
 }
 
-.judge {
+.judge_msg {
   color: var(--clr-white);
   font-size: 40px;
   text-align: center;
@@ -69,7 +70,7 @@ body {
 
   text-align: center;
   font-weight: 100;
-  font-size: 5em;
+  font-size: 6em;
   padding: 15px 0;
   margin: 0 2px;
 
