@@ -19,15 +19,16 @@ function handle_click(e) {
   const current_player = whose_turn ? "me" : "you";
   place_mark(item, current_player);
 
-  // INPUT THE DATA TO RECORD
+  // INPUT THE DATA TO RECORD ARRAY
   const value = item.id;
   input_data(value, current_player);
+  console.log(record);
 
   //　COUTING THE GAME TIME
   game_counter++;
 
   // CHECK FOR WIN
-  if (check_win(record) === true) {
+  if (check_win() === true) {
     game_over();
     // CHECK FOR DRAW
   } else if (check_draw(game_counter) === true) {
@@ -47,40 +48,67 @@ function place_mark(item, player) {
 }
 
 function input_data(value, player) {
-  for (let i = 0; i < record.length; i++) {
+  for (let i = 1; i < record.length; i++) {
     if (player === "me" && value === record[i]) {
-      record[i] = -1;
+      record[i] = "o";
     } else if (player === "you" && value === record[i]) {
-      record[i] = -2;
+      record[i] = "x";
     }
   }
 }
 
-function check_win(record) {
-  if (
-    (record[1] === -1 && record[2] === -1 && record[3] === -1) ||
-    (record[4] === -1 && record[5] === -1 && record[6] === -1) ||
-    (record[7] === -1 && record[8] === -1 && record[9] === -1) ||
-    (record[1] === -1 && record[4] === -1 && record[7] === -1) ||
-    (record[2] === -1 && record[5] === -1 && record[8] === -1) ||
-    (record[3] === -1 && record[7] === -1 && record[9] === -1) ||
-    (record[1] === -1 && record[5] === -1 && record[9] === -1) ||
-    (record[3] === -1 && record[5] === -1 && record[7] === -1)
-  ) {
+// function check_win(record) {
+//   if (
+//     (record[1] === "o" && record[2] === "o" && record[3] === "o") ||
+//     (record[4] === "o" && record[5] === "o" && record[6] === "o") ||
+//     (record[7] === "o" && record[8] === "o" && record[9] === "o") ||
+//     (record[1] === "o" && record[4] === "o" && record[7] === "o") ||
+//     (record[2] === "o" && record[5] === "o" && record[8] === "o") ||
+//     (record[3] === "o" && record[6] === "o" && record[9] === "o") ||
+//     (record[1] === "o" && record[5] === "o" && record[9] === "o") ||
+//     (record[3] === "o" && record[5] === "o" && record[7] === "o")
+//   ) {
+//     judge_msg.textContent = list_judge_msg[1];
+//     return true;
+//   } else if (
+//     (record[1] === "x" && record[2] === "x" && record[3] === "x") ||
+//     (record[4] === "x" && record[5] === "x" && record[6] === "x") ||
+//     (record[7] === "x" && record[8] === "x" && record[9] === "x") ||
+//     (record[1] === "x" && record[4] === "x" && record[7] === "x") ||
+//     (record[2] === "x" && record[5] === "x" && record[8] === "x") ||
+//     (record[3] === "x" && record[6] === "x" && record[9] === "x") ||
+//     (record[1] === "x" && record[5] === "x" && record[9] === "x") ||
+//     (record[3] === "x" && record[5] === "x" && record[7] === "x")
+//   ) {
+//     judge_msg.textContent = list_judge_msg[2];
+//     return true;
+//   }
+// }
+
+function check_win() {
+  if (is_win_pattern_found("o", record) == true) {
     judge_msg.textContent = list_judge_msg[1];
     return true;
-  } else if (
-    (record[1] === -2 && record[2] === -2 && record[3] === -2) ||
-    (record[4] === -2 && record[5] === -2 && record[6] === -2) ||
-    (record[7] === -2 && record[8] === -2 && record[9] === -2) ||
-    (record[1] === -2 && record[4] === -2 && record[7] === -2) ||
-    (record[2] === -2 && record[5] === -2 && record[8] === -2) ||
-    (record[3] === -2 && record[6] === -2 && record[9] === -2) ||
-    (record[1] === -2 && record[5] === -2 && record[9] === -2) ||
-    (record[3] === -2 && record[5] === -2 && record[7] === -2)
-  ) {
+  } else if (is_win_pattern_found("x", record) == true) {
     judge_msg.textContent = list_judge_msg[2];
     return true;
+  }
+}
+
+function is_win_pattern_found(mark, record) {
+  if (
+    (record[1] === mark && record[2] === mark && record[3] === mark) ||
+    (record[4] === mark && record[5] === mark && record[6] === mark) ||
+    (record[7] === mark && record[8] === mark && record[9] === mark) ||
+    (record[1] === mark && record[4] === mark && record[7] === mark) ||
+    (record[2] === mark && record[5] === mark && record[8] === mark) ||
+    (record[3] === mark && record[6] === mark && record[9] === mark) ||
+    (record[1] === mark && record[5] === mark && record[9] === mark) ||
+    (record[3] === mark && record[5] === mark && record[7] === mark)
+  ) {
+    return true;
+  } else {
+    return false;
   }
 }
 
