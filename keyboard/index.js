@@ -12,6 +12,7 @@ window.addEventListener("keydown", function(e) {
 
   key.classList.add("pressed");
   const keys = document.querySelectorAll(".key");
+  // when transition(css) is done, then call the function removeTranstion
   keys.forEach(key => key.addEventListener("transitionend", removeTransition));
 });
 
