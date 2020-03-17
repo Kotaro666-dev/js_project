@@ -2,6 +2,7 @@ const RANDOM_QUOTE_API_URL = "http://api.quotable.io/random";
 const quoteDisplayElement = document.getElementById("quoteDisplay");
 const quoteInputElement = document.getElementById("quoteInput");
 const timerElement = document.getElementById("timer");
+const incorrectCounterElement = document.getElementById("incorrectCounter");
 
 quoteInputElement.addEventListener("input", () => {
   //   console.log("changed");
@@ -9,6 +10,7 @@ quoteInputElement.addEventListener("input", () => {
   const arrayQuote = quoteDisplayElement.querySelectorAll("span");
   const arrayValue = quoteInputElement.value.split("");
 
+  let incorrectCounter = 0;
   let isAllCorrect = true;
   arrayQuote.forEach((characterSpan, index) => {
     const character = arrayValue[index];
@@ -23,9 +25,11 @@ quoteInputElement.addEventListener("input", () => {
     } else {
       characterSpan.classList.add("incorrect");
       characterSpan.classList.remove("correct");
+      incorrectCounter++;
       isAllCorrect = false;
     }
   });
+  incorrectCounterElement.innerText = incorrectCounter;
 
   if (isAllCorrect === true) {
     renderNewQuote();
