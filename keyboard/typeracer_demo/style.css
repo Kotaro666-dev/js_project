@@ -1,0 +1,172 @@
+/* General */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* color */
+  --clr-white: #ffffff;
+  --clr-gray: #aeaeb2;
+  --clr-black: #1b1c1d;
+  --clr-cream: #efe9e8;
+  --clr-darkcream: #c6c5c4;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  background: var(--clr-white);
+}
+
+/* Display */
+.display {
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background: var(--clr-cream);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 700px;
+  /* This max-width is so useful tip */
+  max-width: 90%;
+  margin-bottom: 15rem;
+}
+
+.time-board {
+  position: absolute;
+  top: 2rem;
+  font-size: 1.3rem;
+  color: var(--clr-black);
+  font-weight: 100;
+}
+
+.timer {
+  position: absolute;
+  top: 4rem;
+  font-size: 3rem;
+  color: var(--clr-black);
+  font-weight: bold;
+}
+
+.quote-display {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  margin-left: calc(1rem + 2px);
+  margin-right: calc(1rem + 2px);
+}
+
+.quote-input {
+  background: transparent;
+  border: 2px solid var(--clr-darkcream);
+  outline: none;
+  width: 100%;
+  height: 8rem;
+  /* this margin set makes the content always in the center */
+  margin: auto;
+  resize: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.quote-input:focus {
+  border-color: var(--clr-black);
+}
+
+.correct {
+  color: var(--clr-gray);
+}
+
+.incorrect {
+  color: red;
+  text-decoration: underline;
+}
+
+/* Keyboard */
+
+.keyboard {
+  font-family: "Open Sans", "Roboto", Arial, Helvetica, sans-serif;
+  min-width: 1000px;
+  padding: 20px;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -90%);
+  border-radius: 10px;
+  background: var(--clr-gray);
+}
+
+.first_row {
+  display: grid;
+  /* grid-template-columns: repeat(14, auto); */
+  grid-template-columns: 50px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px auto;
+  grid-gap: 5px;
+  margin-bottom: 5px;
+}
+
+.second_row {
+  display: grid;
+  /* grid-template-columns: repeat(14, auto); */
+  grid-template-columns: auto 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px;
+  grid-gap: 5px;
+  margin-bottom: 5px;
+}
+
+.third_row {
+  display: grid;
+  /* grid-template-columns: repeat(13, auto); */
+  grid-template-columns: 1fr 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 1fr;
+  grid-gap: 5px;
+  margin-bottom: 5px;
+}
+
+.fourth_row {
+  display: grid;
+  /* grid-template-columns: repeat(12, auto); */
+  grid-template-columns: 1fr 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 1fr;
+  grid-gap: 5px;
+  margin-bottom: 5px;
+}
+
+.fifth_row {
+  display: grid;
+  /* grid-template-columns: repeat(7, auto); */
+  grid-template-columns: auto auto auto auto 40% auto auto 5% 5% 5% 5%;
+  grid-gap: 5px;
+}
+
+.key {
+  background: var(--clr-black);
+  color: var(--clr-white);
+
+  border: 3px solid var(--clr-black);
+  border-radius: 5px;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 20px;
+  transition: ease-out 0.08s;
+}
+
+/* .pressed {
+  transform: scale(0.88);
+  opacity: 0.7;
+  border-color: var(--clr-black);
+  box-shadow: 0 0 10px var(--clr-black);
+} */
+
+.pressed {
+  transform: scale(0.95);
+  background: var(--clr-white);
+  border-color: var(--clr-white);
+  box-shadow: 0 0 10px var(--clr-black);
+}
